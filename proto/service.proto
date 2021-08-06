@@ -1,0 +1,15 @@
+syntax = "proto3";
+package proto;
+option go_package = "./proto";
+
+message Request{
+    string name = 1;
+}
+
+message Response{
+    string result = 1;
+}
+
+service IncrementService{
+    rpc Increment(Request) returns (Response);
+}
