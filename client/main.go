@@ -5,12 +5,13 @@ import(
 	"context"
 	"google.golang.org/grpc"
 	"proto"
+	"github.com/grpc-ecosystem/go-grpc-prometheus"
 )
 
 func main(){
 	var opts []grpc.DialOption
 	...
-	conn, err := grpc.Dial("localhost:9090", opts...)
+	conn, err := grpc.Dial("localhost:9090", opts..., grpc.WithUnaryInterceptor(grpc_prometheus.UnaryClientInterceptor))
 	if err != nil {
   		panic(err)
 	}
